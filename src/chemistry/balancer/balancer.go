@@ -107,15 +107,15 @@ func printEquation(equation string) (string, error) {
 		}
 		result += " + " + v
 	}
-	result += " → "
+	result += " = "
 
 	gases := []string{"NH3", "AsH3", "CH4", "C6H6", "N2", "CO", "CCl4", "F2", "ClO2", "C2H4", "Cl2", "H2", "ClO2", "H2S", "NO", "NO2", "O3", "SO2", "O2", "CO2", "C2H2", "N2O5", "SO3", "H2S"}
 	sediments := []string{"Mg(OH)2", "Al(OH)3", "Sn(OH)2", "Pb(OH)2", "Cr(OH)3", "Mn(OH)2", "Fe(OH)2", "Fe(OH)3", "Co(OH)2", "Ni(OH)2", "Cu(OH)2", "Zn(OH)2", "Cd(OH)2", "CaF2", "SrF2", "HgF2", "AgCl", "AgBr", "AgI", "HgI2", "SrSO4", "BaSO4", "PbSO4", "HgSO4", "CaSO3", "SrSO3", "SnSO3", "PbSO3", "MnSO3", "FeSO3", "CoSO3", "NiSO3", "Ag2SO3", "SrS", "SnS", "PbS", "MnS", "FeS", "Fe2S3", "CoS", "NiS", "CuS", "Ag2S", "ZnS", "CdS", "HgS", "Sn(NO3)2", "Li3PO4", "Ca3(PO4)2", "Sr3(PO4)2", "Ba3(PO4)2", "AlPO4", "Sn3(PO4)2", "Pb3(PO4)2", "CrPO4", "Mn3(PO4)2", "Fe3(PO4)2", "FePO4", "Co3(PO4)2", "Cu3(PO4)2", "Ni3(PO4)2", "Ag3PO4", "Zn3(PO4)2", "Cd3(PO4)2", "Hg3(PO4)2", "CaCO3", "SrCO3", "BaCO3", "SnCO3", "PbCO3", "MnCO3", "FeCO3", "CoCO3", "NiCO3", "Ag2CO3", "ZnCO3", "CdCO3", "HgCO3", "H2SiO3", "MgSiO3", "CaSiO3", "SrSiO3", "BaSiO3", "Al2(SiO3)3", "SnSiO3", "PbSiO3", "FeSiO3", "CoSiO3", "CdSiO3"}
 	if stringInSlice(rightSide[0], gases) {
-		rightSide[0] += "↑"
+		rightSide[0] += "[G]"
 	}
 	if stringInSlice(rightSide[0], sediments) {
-		rightSide[0] += "↓"
+		rightSide[0] += "[S]"
 	}
 	result += rightSide[0]
 	for idx, v := range rightSide {
@@ -123,10 +123,10 @@ func printEquation(equation string) (string, error) {
 			continue
 		}
 		if stringInSlice(v, gases) {
-			v += "↑"
+			v += "[G]"
 		}
 		if stringInSlice(v, sediments) {
-			v += "↓"
+			v += "[S]"
 		}
 
 		result += " + " + v
@@ -263,16 +263,16 @@ func balance(equation string) (string, error) {
 			result += " + " + strconv.Itoa(int(coeffs[idx])) + " " + v
 		}
 	}
-	result += " → "
+	result += " = "
 
 	gases := []string{"NH3", "AsH3", "CH4", "C6H6", "N2", "CO", "CCl4", "F2", "ClO2", "C2H4", "Cl2", "H2", "ClO2", "H2S", "NO", "NO2", "O3", "SO2", "O2", "CO2", "C2H2", "N2O5", "SO3", "H2S"}
 	sediments := []string{"Mg(OH)2", "Al(OH)3", "Sn(OH)2", "Pb(OH)2", "Cr(OH)3", "Mn(OH)2", "Fe(OH)2", "Fe(OH)3", "Co(OH)2", "Ni(OH)2", "Cu(OH)2", "Zn(OH)2", "Cd(OH)2", "CaF2", "SrF2", "HgF2", "AgCl", "AgBr", "AgI", "HgI2", "SrSO4", "BaSO4", "PbSO4", "HgSO4", "CaSO3", "SrSO3", "SnSO3", "PbSO3", "MnSO3", "FeSO3", "CoSO3", "NiSO3", "Ag2SO3", "SrS", "SnS", "PbS", "MnS", "FeS", "Fe2S3", "CoS", "NiS", "CuS", "Ag2S", "ZnS", "CdS", "HgS", "Sn(NO3)2", "Li3PO4", "Ca3(PO4)2", "Sr3(PO4)2", "Ba3(PO4)2", "AlPO4", "Sn3(PO4)2", "Pb3(PO4)2", "CrPO4", "Mn3(PO4)2", "Fe3(PO4)2", "FePO4", "Co3(PO4)2", "Cu3(PO4)2", "Ni3(PO4)2", "Ag3PO4", "Zn3(PO4)2", "Cd3(PO4)2", "Hg3(PO4)2", "CaCO3", "SrCO3", "BaCO3", "SnCO3", "PbCO3", "MnCO3", "FeCO3", "CoCO3", "NiCO3", "Ag2CO3", "ZnCO3", "CdCO3", "HgCO3", "H2SiO3", "MgSiO3", "CaSiO3", "SrSiO3", "BaSiO3", "Al2(SiO3)3", "SnSiO3", "PbSiO3", "FeSiO3", "CoSiO3", "CdSiO3"}
 
 	if stringInSlice(rightSide[0], gases) {
-		rightSide[0] += "↑"
+		rightSide[0] += "[G]"
 	}
 	if stringInSlice(rightSide[0], sediments) {
-		rightSide[0] += "↓"
+		rightSide[0] += "[S]"
 	}
 	substanceCoeff := int(coeffs[len(leftSide)])
 	if substanceCoeff == 1 {
@@ -285,10 +285,10 @@ func balance(equation string) (string, error) {
 			continue
 		}
 		if stringInSlice(v, gases) {
-			v += "↑"
+			v += "[G]"
 		}
 		if stringInSlice(v, sediments) {
-			v += "↓"
+			v += "[S]"
 		}
 		substanceCoefficient := int(coeffs[len(leftSide)+idx])
 		if substanceCoefficient == 1 {
@@ -354,7 +354,6 @@ func Balance(equation string) (string, error) {
 	//equation := "Mg(OH)2 + H3PO4 = H2O + Mg3(PO4)2"
 	//equation := "Ca3(PO4)2 + SiO2 + C = CaSiO3 + CO + P"
 	//equation = "Ni(NO3)2 + NaOH = NaNO3 + Ni(OH)2"
-	//equation := "CH3OH + 11O2 = 10CO2 + 2H2O "
 
 	if isBalanced(equation) {
 		return balance(equation)
